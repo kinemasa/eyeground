@@ -22,7 +22,7 @@ def natural_keys(text):
 # INPUT_DIR = "D:\\1214\\cafe100mg-15\\tumu1\\"
 INPUT_DIR = "C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-addmean5\\"
 files = glob.glob(INPUT_DIR+'*')
-OUTPUT_DIR= 'C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\\\'
+OUTPUT_DIR= 'C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\'
 temp = cv2.imread("C:\\Users\\kine0\\labo\\ImageSensing2\\templete-example.png")
 num = len(files)
 
@@ -65,16 +65,16 @@ i = 0
 if __name__ =="__main__":
 
     ## input
-    # INPUT_DIR = "D:\\1214\\cafe100mg-15\\tumu1\\"
-    INPUT_DIR = "C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-addmean5\\"
+    INPUT_DIR = "D:\\1214\\cafe100mg-15\\tumu1\\"
+    #INPUT_DIR = "C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-addmean5\\"
     files = glob.glob(INPUT_DIR+'*')
     files = sorted(glob.glob(INPUT_DIR+'*'), key=natural_keys)
-    temp = cv2.imread("C:\\Users\\kine0\\labo\\ImageSensing2\\templete-example.png")
+    temp = cv2.imread("C:\\Users\\kine0\\tumuraLabo\\eyeground\\eyeground\\templatematching\\result\\sample-template.png")
 
-    OUTPUT_DIR1= 'C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\'
+    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\'
 
     subject= 'sample'
-    output_dir = OUTPUT_DIR1 + subject
+    output_dir = OUTPUT_DIR1 + subject+"\\"
     os.mkdir(output_dir)
 
     

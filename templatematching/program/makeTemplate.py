@@ -24,12 +24,12 @@ def getVideoROI(img):
 if __name__ == "__main__":
 
     ## import dir_file
-    # dir_name = 'D:\\1214\\cafe100mg-15\\tumu1\\'
-    dir_name = "C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-addmean5\\"
+    dir_name = 'D:\\1214\\cafe100mg-15\\tumu1\\'
+    # dir_name = "C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-addmean5\\"
     files = glob.glob(dir_name+'*')
 
     ## output file
-    OUTPUT_DIR = "..\result\\"
+    OUTPUT_DIR = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\eyeground\\templatematching\\result\\"
     subject ="sample"
     ## import First file
     imgFirst_name = files[0]
@@ -45,6 +45,6 @@ if __name__ == "__main__":
 
     ##OUTPUT
 
-    cv2.imwrite(OUTPUT_DIR+subject+"template.png", selectRoi_crop)
+    cv2.imwrite(OUTPUT_DIR+subject+"-template.png", selectRoi_crop)
 
-    cv2.imwrite(OUTPUT_DIR+subject+"checktemplate.png", img)
+    cv2.imwrite(OUTPUT_DIR+subject+"-checktemplate.png", img)
