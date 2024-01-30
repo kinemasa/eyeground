@@ -17,7 +17,7 @@ import sys
 import os
 
 
-OUTPUT_DIR ="C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-stab\\"
+OUTPUT_DIR ="C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\"
 
 def atoi(text):
     return int(text) if text.isdigit() else text
@@ -44,14 +44,15 @@ def stab(img_file):
         H = img1.shape[0]
 
 
+
+
         
 
         # affine変換による平行移動
         M = np.float32([[1, 0, -x], [0, 1, -y]])
         aligned_img= cv2.warpAffine(gray2, M, (W, H))
-        
-       
-        cv2.imwrite(OUTPUT_DIR +"stab" +str(k)+".png", aligned_img)
+
+        cv2.imwrite(output_dir +"stab" +str(k)+".png", aligned_img)
 
 
 
@@ -62,11 +63,15 @@ def stab(img_file):
 
 if __name__ == "__main__":
 
-    INPUT_DIR ="C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-templetetriming\\"
+    INPUT_DIR ="C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-integrate5\\tumu-13-mini1\\"
     
     files = sorted(glob.glob(INPUT_DIR+'*'), key=natural_keys)
-    
-    
+    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-stab\\'
+
+    subject= 'tumu-13-mini1-integrate5'
+    output_dir = OUTPUT_DIR1 + subject+"\\"
+    os.mkdir(output_dir)
+
     num =len(files)
     stab(files)
 

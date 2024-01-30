@@ -41,13 +41,13 @@ def bandpass_filter_pulse(pulse, band_width, sample_rate):
 
     return pulse_bp
 
-save__filename ="C:\\Users\\kine0\\labo\\ImageSensing2\\result2.png"
-df=pd.read_csv("C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\interpolate-meanpixel.csv")
+save__filename ="C:\\Users\\kine0\\tumuraLabo\\eyeground\\result.png"
+df=pd.read_csv("C:\\Users\\kine0\\tumuraLabo\\eyeground\\interpolate\\cafe15-tumu1-mini-1\\interpolate101.csv")
 x = df.index.values.tolist()
 y = df.iloc[:,0]
 # band_df = bandpass_filter_pulse(y,[0.75,5.0],60)
-x =x[24:96]
-y =y[24:96]
+x =x[73:100]
+y =y[73:100]
 
 x2, y2 = spline_interp(x, y)
 fig,ax = plt.subplots()

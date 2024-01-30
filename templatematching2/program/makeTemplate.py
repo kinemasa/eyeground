@@ -14,7 +14,6 @@ import os
 
 
 def getVideoROI(img):
-    cv2.namedWindow("ROIselector", cv2.WINDOW_NORMAL)
     roi = cv2.selectROI(img)
     cv2.destroyAllWindows()
     return roi
@@ -25,13 +24,13 @@ def getVideoROI(img):
 if __name__ == "__main__":
 
     ## import dir_file
-    dir_name = 'D:\\129\\masa5\\'
-    # dir_name = "C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-addmean5\\"
+    
+    dir_name = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\tumu-13-contrast\\"
     files = glob.glob(dir_name+'*')
 
     ## output file
-    OUTPUT_DIR = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\eyeground\\templatematching\\result\\"
-    subject ="tumu-2"
+    OUTPUT_DIR = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\eyeground\\templatematching2\\result\\"
+    subject ="tumu-13-mini1"
     ## import First file
     imgFirst_name = files[0]
     img = cv2.imread(imgFirst_name)

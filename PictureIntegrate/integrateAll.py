@@ -14,6 +14,8 @@ import sys
 import os
 
 
+OUTPUT_DIR ="C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-addmean10\\"
+
 def atoi(text):
     return int(text) if text.isdigit() else text
 
@@ -27,28 +29,25 @@ def addmean(img_file):
     img1  =  cv2.imread(img_file[0])
     h,w,_ = img1.shape
     gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY).astype(np.float32)
-    
-    for k  in range(0,num,5):
-        base_array=np.zeros((h,w),np.float32)
-        for  t in range(0,5):
-            img =cv2.imread(img_file[k+t],0)
-            base_array +=img
-
-        base_array /= 5
-        base_array = base_array.astype(np.uint8)
-        cv2.imwrite(output_dir  +str(k) +".png",base_array)
+    base_array=np.zeros((h,w),np.float32)
+    for k  in range(0,num):
+        img =cv2.imread(img_file[k],0)
+        base_array +=img
+    base_array /= num
+    base_array = base_array.astype(np.uint8)
+    cv2.imwrite(output_dir +"addmeanAll" +".png",base_array)
 
 
 
 if __name__ == "__main__":
 
-    INPUT_DIR ="C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-stab\\tumu-13-mini1\\"
+    INPUT_DIR ="C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-wavelet\\cafe60-tumu2-mini1\\"
     
     files = sorted(glob.glob(INPUT_DIR+'*'), key=natural_keys)
     
-    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-integrate5\\'
+    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-all\\'
 
-    subject= 'tumu-13-mini1'
+    subject= 'cafe60-tumu2'
     output_dir = OUTPUT_DIR1 + subject+"\\"
     os.mkdir(output_dir)
 

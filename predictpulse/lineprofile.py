@@ -15,6 +15,8 @@ import os
 import re
 import csv
 from sklearn import preprocessing
+import pandas as pd
+
 
 
 def atoi(text):
@@ -124,23 +126,26 @@ def bandpass_filter_pulse(pulse, band_width, sample_rate):
 
 if  __name__ == "__main__":
 
-    INPUT_DIR ="C:\\Users\\kine0\\labo\\ImageSensing2\\gantei\\BloodVessel\\result\\cafe15tumu1-minitrimingoutotu\\"
+    INPUT_DIR ="C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-wavelet\\takahashi-1-mini1\\"
 
     
-    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\'
+    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\lineprofile\\'
 
-    subject= 'lineprofile'
-    output_dir = OUTPUT_DIR1 + subject+"\\"
-    os.mkdir(output_dir)
-    output_file= output_dir +"\\result.csv"
+    subject= 'takahashi-1-mini1'
+    output_dir = OUTPUT_DIR1 + subject
+    # os.mkdir(output_dir)
+    output_file= output_dir+"\\lineprofile4.csv"
 
     files = sorted(glob.glob(INPUT_DIR+'*'), key=natural_keys)
     
-    ## start_point,end_point
-    sx =28
-    sy =22
-    ex =31
-    ey =33
+    
+
+
+
+    sx =26
+    sy =27
+    ex =36
+    ey =21
 
 
     start = (sy, sx)
@@ -173,10 +178,12 @@ if  __name__ == "__main__":
         y1=func1(x1)
         y2=func2(x1)
         # 交点の座標を取得
-        idx = np.argwhere(y1 - y2  < 0.001)
+        idx = np.argwhere(y1 - y2  < 0.1)
         fwhm = len(idx)
+        print(fwhm)
         
         fwhm_value.append(fwhm)
+        # print(file)
         # cv2.line(temp,(sx,sy),(ex,ey),(0,0,255),1) 
         # cv2.namedWindow('temp',cv2.WINDOW_NORMAL)
         # cv2.imshow("temp",temp)
@@ -185,23 +192,22 @@ if  __name__ == "__main__":
         # plt.plot(x1[idx], y2[idx],label='Intersection',color='green')
         # plt.show()
 
-    
-
-
-
 
     normalized_fwhm = preprocessing.minmax_scale(fwhm_value)
-    fp1 = 3 #通過域端周波数[Hz]
-    fs1 = 5       #阻止域端周波数[Hz]
-    # fp2 = 0.75       #阻止域端周波数[Hz]
-    # fs2 = 0.74       #阻止域端周波数[Hz]
-    gpass = 3       #通過域端最大損失[dB]
-    gstop = 10      #阻止域端最小損失[dB]
+    # fp1 = 3 #通過域端周波数[Hz]
+    # fs1 = 5       #阻止域端周波数[Hz]
+    # # fp2 = 0.75       #阻止域端周波数[Hz]
+    # # fs2 = 0.74       #阻止域端周波数[Hz]
+    # gpass = 3       #通過域端最大損失[dB]
+    # gstop = 10      #阻止域端最小損失[dB]
 
-    samplerate = 60
-    data_filt =bandpass_filter_pulse(normalized_fwhm, [0.75,5.0], samplerate)
-    # data_filt1 =lowpass(fwhm_value,samplerate,fp1,fp1,gpass,gstop)
-    # data_filt2 =highpass(data_filt1,samplerate,fp2,fp2,gpass,gstop)
+    
+    
+   
+    samplerate = 12
+    data_filt =bandpass_filter_pulse(normalized_fwhm, [0.75,3.0], samplerate)
+    # # data_filt1 =lowpass(fwhm_value,samplerate,fp1,fp1,gpass,gstop)
+    # # data_filt2 =highpass(data_filt1,samplerate,fp2,fp2,gpass,gstop)
 
     with open(output_file, 'w') as f:
         writer = csv.writer(f, lineterminator='\n')

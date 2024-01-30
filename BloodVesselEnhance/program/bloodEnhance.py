@@ -58,7 +58,7 @@ def isotropic_undec_wavelet_filter2D(image):
     C2 = 4. / 16.
     C3 = 6. / 16.
     W = []
-    kernel_sizes = [5,9,17,33]
+    kernel_sizes = [5,9,17]
     for idx, ks in enumerate(kernel_sizes):
         ks = ks//2
         kernel = np.zeros((1, kernel_sizes[idx]), dtype = 'float32')
@@ -77,9 +77,9 @@ def isotropic_undec_wavelet_filter2D(image):
     #     Computing the result Iiuw
     W1_median =cv2.medianBlur(W[1],3)
     W2_median =cv2.medianBlur(W[2],3)
-    Iiuw = W1_median+W2_median
+    Iiuw = W[1]+W[2]
     
-    plt.imsave("wavelet.png",Iiuw)
+    # plt.imsave(output_dir +"wavelet.png",Iiuw)
     return Iiuw, c_nxt, W
 
 def rotate_image(image, angle):
@@ -102,23 +102,30 @@ def rotate_image(image, angle):
 
 
 if __name__ =="__main__":
-    INPUT_DIR = "sample"
+    INPUT_DIR = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-integrate5\\tumu-13-mini1\\"
     files = sorted(glob.glob(INPUT_DIR+'*'), key=natural_keys)
     
     num = len(files)
 
-    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\'
-    subject= 'sample'
-    output_dir = OUTPUT_DIR1 + subject+"\\"
-    os.mkdir(output_dir)
+    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini-wavelet\\'
+    subject1= 'tumu-13-mini1'
+    subject2= 'cafe15-tumu3-equalizehist'
+    output_dir1 = OUTPUT_DIR1 + subject1+"\\"
+    output_dir2 = OUTPUT_DIR1 + subject2+"\\"
+    # os.mkdir(output_dir1)
+    # os.mkdir(output_dir2)
 
 
     i = 0
     for f in files:
         img =f
+        img_gray =cv2.imread(f,0)
+        
         grChannel= extract_green_channel(img)
-        filtered_result, _, _ = isotropic_undec_wavelet_filter2D(grChannel)
-        output_file = output_dir + str(i) +".png"
+        filtered_result, _, W = isotropic_undec_wavelet_filter2D(grChannel)
+        output_file = output_dir1 + str(i) +".png"
+    
+        # output_file2 = output_dir2 + str(i) +".png"
         plt.gray()
         plt.imsave(output_file,filtered_result)
         i += 1

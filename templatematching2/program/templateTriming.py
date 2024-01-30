@@ -23,15 +23,14 @@ def natural_keys(text):
 if __name__ =="__main__":
 
     ## input
-    INPUT_DIR = "D:\\129\\masa6\\"
-    # INPUT_DIR = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\cafe15-tumu2-stone\\"
+    INPUT_DIR = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\tumu-13-contrast\\"
     files = glob.glob(INPUT_DIR+'*')
     files = sorted(glob.glob(INPUT_DIR+'*'), key=natural_keys)
-    temp = cv2.imread("C:\\Users\\kine0\\tumuraLabo\\eyeground\\eyeground\\templatematching\\result\\tumu-1-template.png",0)
+    temp = cv2.imread("C:\\Users\\kine0\\tumuraLabo\\eyeground\\eyeground\\templatematching2\\result\\tumu-13-mini1-template.png",0)
 
-    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\'
+    OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result-mini\\'
 
-    subject= 'tumu-3'
+    subject= 'tumu-13-mini-1'
     output_dir = OUTPUT_DIR1 + subject+"\\"
 
 
