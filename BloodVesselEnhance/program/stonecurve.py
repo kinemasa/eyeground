@@ -1,3 +1,10 @@
+"""
+トーンカーブを用いることで画像全体のコントラストを上昇させる
+
+input :入力画像
+output : コントラスト強調画像
+"""
+
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt

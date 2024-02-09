@@ -1,8 +1,8 @@
 """
-テンプレートマッチングを用いて動画から対象の画像群を切り出す
+y=ax +b　の形でコントラストを強調する
 
 input :眼底画像群フォルダ
-output :テンプレートマッチングを行ってトリミングを行った画像群
+output :コントラスト強調画像群
 """
 
 import cv2
@@ -23,16 +23,15 @@ def natural_keys(text):
 if __name__ =="__main__":
 
     ## input
-    INPUT_DIR = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\cafe15-tumu2-mini-1\\"
+    INPUT_DIR = "C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\tumu-1\\"
     files = glob.glob(INPUT_DIR+'*')
     files = sorted(glob.glob(INPUT_DIR+'*'), key=natural_keys)
     OUTPUT_DIR1= 'C:\\Users\\kine0\\tumuraLabo\\eyeground\\result\\'
 
-    subject= 'cafe15-tumu2-mini-contrast'
+    subject= 'tumu-13-contrast'
     output_dir = OUTPUT_DIR1 + subject+"\\"
 
-
-    os.mkdir(output_dir)
+    # os.mkdir(output_dir)
     
 
 
@@ -46,7 +45,7 @@ if __name__ =="__main__":
         img = cv2.imread(f,0)
         # コントラストと明るさの変更
         alpha = 1.5  # コントラストの倍率（1より大きい値でコントラストが上がる）
-        beta = -100  # 明るさの調整値（正の値で明るくなる
+        beta = -130  # 明るさの調整値（正の値で明るくなる
         adjusted_image = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
         
         output_file =output_dir +str(i) +".png"

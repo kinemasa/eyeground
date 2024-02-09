@@ -1,6 +1,9 @@
 """
 5枚ずつの画像の積算を行う
 
+
+input :眼底画像群フォルダ
+output :5枚ごとの画像積算
 """
 import cv2
 import matplotlib.pyplot as plt

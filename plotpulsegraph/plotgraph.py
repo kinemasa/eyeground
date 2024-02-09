@@ -1,3 +1,9 @@
+"""
+csvファイルからグラフを作成する
+
+input :csvファイル
+output :グラフ画像
+"""
 import sys
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -46,13 +52,13 @@ df=pd.read_csv("C:\\Users\\kine0\\tumuraLabo\\eyeground\\interpolate\\cafe15-tum
 x = df.index.values.tolist()
 y = df.iloc[:,0]
 # band_df = bandpass_filter_pulse(y,[0.75,5.0],60)
-x =x[73:100]
-y =y[73:100]
+x =x[0:36]
+y =y[0:36]
 
 x2, y2 = spline_interp(x, y)
 fig,ax = plt.subplots()
 
-ax.plot(x2, y2, color='r', label='spline', alpha=0.7)
+ax.plot(x2, y2, color='darkorange', label='spline', alpha=0.7)
 # ax.plot(time, pulse, color='g',label="linear", alpha=0.7)
 
 plt.legend()

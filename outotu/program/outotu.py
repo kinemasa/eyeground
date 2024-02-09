@@ -1,3 +1,9 @@
+"""
+周辺画素の平均値で除算することにより照明ムラを補正する（凹凸関数）
+
+input :眼底画像群フォルダ
+output :照明ムラ補正画像
+"""
 import cv2
 import matplotlib.pyplot as plt
 import math

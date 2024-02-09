@@ -2,6 +2,9 @@
 ラインプロファイルで算出した値に対して
 テンプレートマッチングが出来ていない箇所を取り除き
 ３次スプライン補間を行う
+
+input :lineprofile.csv
+output : スプライン補間を行った後のcsv
 """
 
 import pandas as pd 
